@@ -1,0 +1,13 @@
+{
+  "name": "content-sub-contracts",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo \"hardhat compile\"",
+    "lint": "echo \"no lint\"",
+    "typecheck": "echo \"no typecheck\""
+  },
+  "devDependencies": {
+    "hardhat": "2.26.3"
+  }
+}
