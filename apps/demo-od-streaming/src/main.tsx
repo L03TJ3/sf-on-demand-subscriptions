@@ -36,7 +36,7 @@ createAppKit({
   features: {
     analytics: true, // Optional - defaults to your Cloud configuration
   },
-  themeMode: "light",
+  themeMode: "dark",
   themeVariables: {
     "--w3m-color-mix": "#00BB7F",
     "--w3m-color-mix-strength": 40,
@@ -51,13 +51,13 @@ const rootEl = document.getElementById("root");
 if (rootEl) {
   createRoot(rootEl).render(
     <StrictMode>
-      <WagmiProvider config={wagmiAdapter.wagmiConfig}>
-        <QueryClientProvider client={queryClient}>
-          <TamaguiProvider config={config}>
+      <TamaguiProvider config={config} defaultTheme="dark">
+        <WagmiProvider config={wagmiAdapter.wagmiConfig}>
+          <QueryClientProvider client={queryClient}>
             <App />
-          </TamaguiProvider>
-        </QueryClientProvider>
-      </WagmiProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
+      </TamaguiProvider>
     </StrictMode>
   );
 }

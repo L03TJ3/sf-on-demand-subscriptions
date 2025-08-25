@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  tamagui: 1.132.21
+
 importers:
 
   .:
@@ -41,6 +44,9 @@ importers:
         version: 1.7.20(@types/react@19.1.11)(bufferutil@4.0.9)(react@18.3.1)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76)
       '@tamagui/animations-react-native':
         specifier: 1.132.21
+        version: 1.132.21(react-dom@18.3.1(react@18.3.1))(react-native@0.79.6(@babel/core@7.28.3)(@types/react@19.1.11)(bufferutil@4.0.9)(react@18.3.1)(utf-8-validate@5.0.10))(react@18.3.1)
+      '@tamagui/theme-builder':
+        specifier: ^1.132.21
         version: 1.132.21(react-dom@18.3.1(react@18.3.1))(react-native@0.79.6(@babel/core@7.28.3)(@types/react@19.1.11)(bufferutil@4.0.9)(react@18.3.1)(utf-8-validate@5.0.10))(react@18.3.1)
       '@tamagui/themes':
         specifier: 1.132.21
