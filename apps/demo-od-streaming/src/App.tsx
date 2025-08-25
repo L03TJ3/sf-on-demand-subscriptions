@@ -34,7 +34,7 @@ function ConnectSection() {
       justifyContent="center"
       animation="medium"
     >
-      <Text>Connect your wallet to view videos</Text>
+      <Text color="$color">Connect your wallet to view videos</Text>
       {/* AppKit provides the connect button as a web component */}
       <appkit-button />
     </YStack>
@@ -56,12 +56,14 @@ function VideoPage({ video, onBack }: { video: Video; onBack: () => void }) {
       <Button
         onPress={onBack}
         borderRadius="$6"
+        borderWidth={2}
+        borderColor="$borderColor"
         elevate
         animation="fast"
         hoverStyle={{ backgroundColor: '$backgroundHover' }}
         pressStyle={{ backgroundColor: '$backgroundPress' }}
       >
-        Back
+        <Text color="$color">Back</Text>
       </Button>
       </YStack>
   );

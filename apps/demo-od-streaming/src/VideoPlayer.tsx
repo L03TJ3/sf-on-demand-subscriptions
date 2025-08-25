@@ -132,12 +132,24 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
           alignItems="center"
           justifyContent="center"
           borderRadius="$6"
-          elevation="$1"
+          borderWidth={2}
+          borderColor="$borderColor"
+          elevation="$2"
+          shadowColor="$shadowColor"
         >
-          <Text>Loading video player...</Text>
+          <Text color="$color">Loading video player...</Text>
         </YStack>
       ) : (
-        <YStack data-vjs-player width="100%" overflow="hidden" borderRadius="$6">
+        <YStack
+          data-vjs-player
+          width="100%"
+          overflow="hidden"
+          borderRadius="$6"
+          borderWidth={2}
+          borderColor="$borderColor"
+          elevation="$2"
+          shadowColor="$shadowColor"
+        >
           <video
             ref={videoRef}
             className="video-js vjs-big-play-centered vjs-responsive"
@@ -158,26 +170,30 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
             bordered
             elevate
             borderRadius="$6"
+            backgroundColor="$background"
+            borderWidth={2}
+            borderColor="$borderColor"
+            shadowColor="$shadowColor"
             padding="$4"
             gap="$3"
             width="90%"
             maxWidth={400}
           >
-            <Dialog.Title>
+            <Dialog.Title color="$borderColor">
               {transactionInProgress
                 ? "Processing Transaction"
                 : "Start Streaming"}
             </Dialog.Title>
             <YStack gap="$2">
               {transactionInProgress ? (
-                <Text>
+                <Text color="$color">
                   Please wait while the transaction is being processed...
                 </Text>
               ) : (
                 <>
-                  <Text>Video length: {Math.round(duration)} sec</Text>
-                  <Text>Rate: {TOKENS_PER_SECOND.toFixed(2)} G$/sec</Text>
-                  <Text>Total: {totalTokens.toFixed(2)} G$</Text>
+                  <Text color="$color">Video length: {Math.round(duration)} sec</Text>
+                  <Text color="$color">Rate: {TOKENS_PER_SECOND.toFixed(2)} G$/sec</Text>
+                  <Text color="$color">Total: {totalTokens.toFixed(2)} G$</Text>
                 </>
               )}
             </YStack>
@@ -186,7 +202,10 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
                 <Button
                   onPress={() => setDialogOpen(false)}
                   borderRadius="$6"
-                  elevate
+                  borderWidth={2}
+                  borderColor="$borderColor"
+                  color="$color"
+                  elevation="$2"
                   animation="fast"
                   hoverStyle={{ backgroundColor: '$backgroundHover' }}
                   pressStyle={{ backgroundColor: '$backgroundPress' }}
@@ -196,10 +215,14 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
                 <Button
                   onPress={handleConfirm}
                   borderRadius="$6"
-                  elevate
+                  borderWidth={2}
+                  borderColor="$borderColor"
+                  backgroundColor="$borderColor"
+                  color="$background"
+                  elevation="$2"
                   animation="fast"
-                  hoverStyle={{ backgroundColor: '$backgroundHover' }}
-                  pressStyle={{ backgroundColor: '$backgroundPress' }}
+                  hoverStyle={{ backgroundColor: '$borderColorHover' }}
+                  pressStyle={{ backgroundColor: '$borderColorHover' }}
                 >
                   Start
                 </Button>
