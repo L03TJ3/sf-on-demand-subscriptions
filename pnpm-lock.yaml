@@ -42,6 +42,9 @@ importers:
       '@tamagui/animations-react-native':
         specifier: 1.132.21
         version: 1.132.21(react-dom@18.3.1(react@18.3.1))(react-native@0.79.6(@babel/core@7.28.3)(@types/react@19.1.11)(bufferutil@4.0.9)(react@18.3.1)(utf-8-validate@5.0.10))(react@18.3.1)
+      '@tamagui/theme-builder':
+        specifier: ^1.132.21
+        version: 1.132.21(react-dom@18.3.1(react@18.3.1))(react-native@0.79.6(@babel/core@7.28.3)(@types/react@19.1.11)(bufferutil@4.0.9)(react@18.3.1)(utf-8-validate@5.0.10))(react@18.3.1)
       '@tamagui/themes':
         specifier: 1.132.21
         version: 1.132.21(react-dom@18.3.1(react@18.3.1))(react-native@0.79.6(@babel/core@7.28.3)(@types/react@19.1.11)(bufferutil@4.0.9)(react@18.3.1)(utf-8-validate@5.0.10))(react@18.3.1)

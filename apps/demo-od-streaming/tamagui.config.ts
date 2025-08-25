@@ -1,6 +1,7 @@
 import { createTamagui, createFont } from 'tamagui';
 import { tokens, themes as baseThemes } from '@tamagui/themes';
 import { createAnimations } from '@tamagui/animations-react-native';
+import { createThemeBuilder } from '@tamagui/theme-builder';
 
 const orbitronFont = createFont({
   family: 'Orbitron, sans-serif',
@@ -38,23 +39,26 @@ const orbitronFont = createFont({
   },
 });
 
-const themes = {
-  ...baseThemes,
+const themeBuilder = createThemeBuilder().addThemes({
   dark_neon: {
-    ...baseThemes.dark,
-    background: '#0d0d0d',
-    backgroundHover: '#1a1a1a',
-    backgroundPress: '#262626',
-    color: '#e0e0e0',
-    colorHover: '#ffffff',
-    colorPress: '#ffffff',
-    borderColor: '#a855f7',
-    borderColorHover: '#c084fc',
-    shadowColor: '#a855f7',
-    shadowColorHover: '#c084fc',
-    placeholderColor: '#7e7e7e',
+    parent: 'dark',
+    theme: {
+      background: '#0d0d0d',
+      backgroundHover: '#1a1a1a',
+      backgroundPress: '#262626',
+      color: '#e0e0e0',
+      colorHover: '#ffffff',
+      colorPress: '#ffffff',
+      borderColor: '#a855f7',
+      borderColorHover: '#c084fc',
+      shadowColor: '#a855f7',
+      shadowColorHover: '#c084fc',
+      placeholderColor: '#7e7e7e',
+    },
   },
-};
+});
+
+const themes = { ...baseThemes, ...themeBuilder.build() } as const;
 
 const config = createTamagui({
   tokens,
