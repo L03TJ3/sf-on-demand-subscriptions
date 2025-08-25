@@ -50,15 +50,20 @@ For coding, openai's cloud-codex has been writing most of the code.
 
 Demo app for stream-paying while watching on-demand content: https://github.com/L03TJ3/sf-on-demand-subscriptions
 
-vscode extensions:
+**vscode extensions:**
+
 Mermaid: https://docs.mermaidchart.com/plugins/visual-studio-code <-- diagram scripting language, which AI seems efficient with producing
+
 Continue: https://continue.dev/ <-- enhance vscode with codebase indexing, agent modes, github access. open-source and free to use.
 
-Free AI api's:
+**Free AI api's:**
+
 https://groq.com <-- open-source models available for free
+
 https://www.voyageai.com/ <-- use rerank and embedding to index data.
 
-Some potentially good mcp's to test out:
+**Some potentially good mcp's to test out:**
+
 https://browsermcp.io/ <-- Have AI test your app's UX/UI flow
 
 ## License
