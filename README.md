@@ -11,11 +11,10 @@ When a viewer presses play in the Video.js player, a G$ stream is started via Su
 ```
 .
 ├─ apps/
-│  └─ web/                 # Next.js app with Video.js wired
+│  └─ web/                 # React app with Video.js wired
 ├─ packages/
-│  ├─ streaming-sdk/       # Thin wrapper for starting/stopping streams
-│  ├─ player-plugin/       # Video.js plugin gating playback
-│  └─ ui/                  # Shared UI components
+│  ├─ subscriptionSdk/     # Thin wrapper for starting/stopping streams
+   ├─ subscriptionSdk/     # Environment to be used for related smart-contracts
 └─ docs/                   # Architecture notes and references
 ```
 
@@ -36,14 +35,32 @@ When a viewer presses play in the Video.js player, a G$ stream is started via Su
    ```
 4. Run the demo web app
    ```bash
-   pnpm --filter @apps/web dev
+   cd apps/demo-od-streaming
+   turbo run dev
    ```
 
 ## Contributing
 
 This project experiments with AI-driven development. Feedback and contributions are welcome, but the goal is to keep the manual code footprint minimal.
 
+## References
+
+For the demo chatgpt has been used for design iterations and structure of product planning and AI agent instructions.
+For coding, openai's cloud-codex has been writing most of the code.
+
+Demo app for stream-paying while watching on-demand content: https://github.com/L03TJ3/sf-on-demand-subscriptions
+
+vscode extensions:
+Mermaid: https://docs.mermaidchart.com/plugins/visual-studio-code <-- diagram scripting language, which AI seems efficient with producing
+Continue: https://continue.dev/ <-- enhance vscode with codebase indexing, agent modes, github access. open-source and free to use.
+
+Free AI api's:
+https://groq.com <-- open-source models available for free
+https://www.voyageai.com/ <-- use rerank and embedding to index data.
+
+Some potentially good mcp's to test out:
+https://browsermcp.io/ <-- Have AI test your app's UX/UI flow
+
 ## License
 
 MIT
-
