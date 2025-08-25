@@ -3,18 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "echo \"build app\"",
+    "dev": "vite --port 3003",
+    "build": "vite build",
     "lint": "echo \"no lint\"",
     "typecheck": "echo \"no typecheck\""
   },
   "dependencies": {
     "@reown/appkit": "1.7.20",
-    "@reown/appkit-wagmi": "1.0.7",
-    "@tanstack/react-query": "5.85.5",
     "@tamagui/animations-react-native": "1.132.21",
     "@tamagui/themes": "1.132.21",
+    "@tanstack/react-query": "5.85.5",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-native-web": "^0.21.1",
     "tamagui": "1.132.21",
     "viem": "2.35.1",
     "wagmi": "2.16.5"
