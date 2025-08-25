@@ -36,7 +36,7 @@ createAppKit({
   features: {
     analytics: true, // Optional - defaults to your Cloud configuration
   },
-  themeMode: "light",
+  themeMode: "dark",
   themeVariables: {
     "--w3m-color-mix": "#00BB7F",
     "--w3m-color-mix-strength": 40,
@@ -53,7 +53,7 @@ if (rootEl) {
     <StrictMode>
       <WagmiProvider config={wagmiAdapter.wagmiConfig}>
         <QueryClientProvider client={queryClient}>
-          <TamaguiProvider config={config}>
+          <TamaguiProvider config={config} defaultTheme="dark_neon">
             <App />
           </TamaguiProvider>
         </QueryClientProvider>

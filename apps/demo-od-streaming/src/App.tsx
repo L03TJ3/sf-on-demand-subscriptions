@@ -8,13 +8,20 @@ const GS_DEV_TOKEN = "0xFa51eFDc0910CCdA91732e6806912Fa12e2FD475";
 
 function renderVideo(video: Video, onSelect: (v: Video) => void) {
   return (
-    <Button key={video.id} onPress={() => onSelect(video)} unstyled>
-      <Image
-        source={{ uri: video.thumbnail }}
-        width={160}
-        height={90}
-        borderRadius={8}
-      />
+    <Button
+      key={video.id}
+      onPress={() => onSelect(video)}
+      borderRadius="$6"
+      padding={0}
+      overflow="hidden"
+      borderWidth={2}
+      borderColor="$borderColor"
+      elevate
+      animation="fast"
+      hoverStyle={{ backgroundColor: '$backgroundHover' }}
+      pressStyle={{ backgroundColor: '$backgroundPress' }}
+    >
+      <Image source={{ uri: video.thumbnail }} width={160} height={90} />
     </Button>
   );
 }
@@ -46,8 +53,17 @@ function VideoPage({ video, onBack }: { video: Video; onBack: () => void }) {
   return (
     <YStack gap="$4" alignItems="center" width="100%">
       <VideoPlayer src={video.src} />
-      <Button onPress={onBack}>Back</Button>
-    </YStack>
+      <Button
+        onPress={onBack}
+        borderRadius="$6"
+        elevate
+        animation="fast"
+        hoverStyle={{ backgroundColor: '$backgroundHover' }}
+        pressStyle={{ backgroundColor: '$backgroundPress' }}
+      >
+        Back
+      </Button>
+      </YStack>
   );
 }
 

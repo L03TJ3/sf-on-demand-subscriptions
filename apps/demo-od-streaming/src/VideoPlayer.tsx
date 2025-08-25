@@ -123,42 +123,41 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
   };
 
   return (
-    <div style={{ width: "100%" }}>
+    <YStack width="100%">
       {loading ? (
-        <div
-          style={{
-            width: "100%",
-            height: 300,
-            backgroundColor: "#000",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#fff",
-          }}
+        <YStack
+          width="100%"
+          height={300}
+          backgroundColor="$background"
+          alignItems="center"
+          justifyContent="center"
+          borderRadius="$6"
+          elevation="$1"
         >
-          Loading video player...
-        </div>
+          <Text>Loading video player...</Text>
+        </YStack>
       ) : (
-        <div data-vjs-player style={{ width: "100%", objectFit: "cover" }}>
+        <YStack data-vjs-player width="100%" overflow="hidden" borderRadius="$6">
           <video
             ref={videoRef}
             className="video-js vjs-big-play-centered vjs-responsive"
             controls
             preload="auto"
             playsInline
-            style={{ width: "100%", height: "100%", backgroundColor: "#000" }}
+            style={{ width: '100%', height: '100%' }}
           >
             <source src={src} type="video/mp4" />
           </video>
-        </div>
+        </YStack>
       )}
 
       <Dialog modal open={dialogOpen} onOpenChange={setDialogOpen}>
         <Dialog.Portal>
-          <Dialog.Overlay />
+          <Dialog.Overlay backgroundColor="$background" opacity={0.8} />
           <Dialog.Content
             bordered
             elevate
+            borderRadius="$6"
             padding="$4"
             gap="$3"
             width="90%"
@@ -184,13 +183,31 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
             </YStack>
             {!transactionInProgress && (
               <XStack gap="$3" justifyContent="flex-end" marginTop="$2">
-                <Button onPress={() => setDialogOpen(false)}>Cancel</Button>
-                <Button onPress={handleConfirm}>Start</Button>
+                <Button
+                  onPress={() => setDialogOpen(false)}
+                  borderRadius="$6"
+                  elevate
+                  animation="fast"
+                  hoverStyle={{ backgroundColor: '$backgroundHover' }}
+                  pressStyle={{ backgroundColor: '$backgroundPress' }}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onPress={handleConfirm}
+                  borderRadius="$6"
+                  elevate
+                  animation="fast"
+                  hoverStyle={{ backgroundColor: '$backgroundHover' }}
+                  pressStyle={{ backgroundColor: '$backgroundPress' }}
+                >
+                  Start
+                </Button>
               </XStack>
             )}
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog>
-    </div>
+    </YStack>
   );
 }
