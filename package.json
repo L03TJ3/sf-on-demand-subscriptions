@@ -9,7 +9,12 @@
     "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
+    "@types/react": "^19.1.11",
+    "@types/react-dom": "^19.1.7",
     "turbo": "2.5.6",
     "typescript": "5.9.2"
+  },
+  "dependencies": {
+    "@reown/appkit-adapter-wagmi": "^1.7.20"
   }
 }

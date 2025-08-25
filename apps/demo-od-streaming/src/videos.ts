@@ -4,7 +4,7 @@ export type Video = {
 };
 
 export const mockVideos: Video[] = [
-  { id: 1, thumbnail: 'https://placekitten.com/320/180' },
-  { id: 2, thumbnail: 'https://placekitten.com/321/180' },
-  { id: 3, thumbnail: 'https://placekitten.com/322/180' }
+  { id: 1, thumbnail: "/assets/test1.jpg" },
+  { id: 2, thumbnail: "/assets/test1.jpg" },
+  { id: 3, thumbnail: "/assets/test1.jpg" },
 ];
