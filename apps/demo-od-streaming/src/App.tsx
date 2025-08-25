@@ -55,7 +55,13 @@ export default function App() {
   const { isConnected } = useAccount();
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   return (
-    <YStack flex={1} padding="$4" alignItems="center" justifyContent="center">
+    <YStack
+      flex={1}
+      padding="$4"
+      alignItems="center"
+      justifyContent="center"
+      width={1200}
+    >
       {isConnected ? (
         selectedVideo ? (
           <VideoPage

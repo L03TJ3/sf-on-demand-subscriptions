@@ -5,11 +5,9 @@ import { useAccount, usePublicClient, useWriteContract } from "wagmi";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
 
-const CFA_FORWARDER =
-  "0xcfA132E353cB4E398080B9700609bb008eceB125" as const;
-const GS_DEV_TOKEN =
-  "0xFa51eFDc0910CCdA91732e6806912Fa12e2FD475" as const;
-const RECEIVER = "0x0000000000000000000000000000000000000001" as const;
+const CFA_FORWARDER = "0xcfA132E353cB4E398080B9700609bb008eceB125" as const;
+const GS_DEV_TOKEN = "0xFa51eFDc0910CCdA91732e6806912Fa12e2FD475" as const;
+const RECEIVER = import.meta.env.VITE_STREAM_RECEIVER;
 
 const cfaForwarderAbi = [
   {
@@ -40,6 +38,7 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
   const { address } = useAccount();
   const publicClient = usePublicClient();
   const { writeContractAsync } = useWriteContract();
+  const [transactionInProgress, setTransactionInProgress] = useState(false);
 
   const confirmedRef = useRef(false);
 
@@ -103,13 +102,7 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
       address: CFA_FORWARDER,
       abi: cfaForwarderAbi,
       functionName: "createFlow",
-      args: [
-        GS_DEV_TOKEN,
-        address,
-        RECEIVER,
-        flowRate,
-        "0x" as `0x${string}`,
-      ],
+      args: [GS_DEV_TOKEN, address, RECEIVER, flowRate, "0x" as `0x${string}`],
     });
 
     await publicClient.waitForTransactionReceipt({ hash });
@@ -118,10 +111,15 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
   const handleConfirm = async () => {
     const player = playerRef.current;
     if (!player) return;
-    await createFlow(flowRateWei);
-    confirmedRef.current = true;
-    setDialogOpen(false);
-    player.play();
+    setTransactionInProgress(true);
+    try {
+      await createFlow(flowRateWei);
+      confirmedRef.current = true;
+      setDialogOpen(false);
+      player.play();
+    } finally {
+      setTransactionInProgress(false);
+    }
   };
 
   return (
@@ -141,14 +139,14 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
           Loading video player...
         </div>
       ) : (
-        <div data-vjs-player style={{ width: "100%", height: 300 }}>
+        <div data-vjs-player style={{ width: "100%", objectFit: "cover" }}>
           <video
             ref={videoRef}
-            className="video-js vjs-big-play-centered"
+            className="video-js vjs-big-play-centered vjs-responsive"
             controls
             preload="auto"
             playsInline
-            style={{ width: "100%", height: "300px", backgroundColor: "#000" }}
+            style={{ width: "100%", height: "100%", backgroundColor: "#000" }}
           >
             <source src={src} type="video/mp4" />
           </video>
@@ -166,18 +164,30 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
             width="90%"
             maxWidth={400}
           >
-            <Dialog.Title>Start Streaming</Dialog.Title>
+            <Dialog.Title>
+              {transactionInProgress
+                ? "Processing Transaction"
+                : "Start Streaming"}
+            </Dialog.Title>
             <YStack gap="$2">
-              <Text>Video length: {Math.round(duration)} sec</Text>
-              <Text>
-                Rate: {TOKENS_PER_SECOND.toFixed(2)} G$/sec ({flowRateWei.toString()} wei/sec)
-              </Text>
-              <Text>Total: {totalTokens.toFixed(2)} G$</Text>
+              {transactionInProgress ? (
+                <Text>
+                  Please wait while the transaction is being processed...
+                </Text>
+              ) : (
+                <>
+                  <Text>Video length: {Math.round(duration)} sec</Text>
+                  <Text>Rate: {TOKENS_PER_SECOND.toFixed(2)} G$/sec</Text>
+                  <Text>Total: {totalTokens.toFixed(2)} G$</Text>
+                </>
+              )}
             </YStack>
-            <XStack gap="$3" justifyContent="flex-end" marginTop="$2">
-              <Button onPress={() => setDialogOpen(false)}>Cancel</Button>
-              <Button onPress={handleConfirm}>Start</Button>
-            </XStack>
+            {!transactionInProgress && (
+              <XStack gap="$3" justifyContent="flex-end" marginTop="$2">
+                <Button onPress={() => setDialogOpen(false)}>Cancel</Button>
+                <Button onPress={handleConfirm}>Start</Button>
+              </XStack>
+            )}
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog>
