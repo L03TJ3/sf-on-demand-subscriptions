@@ -51,13 +51,13 @@ const rootEl = document.getElementById("root");
 if (rootEl) {
   createRoot(rootEl).render(
     <StrictMode>
-      <WagmiProvider config={wagmiAdapter.wagmiConfig}>
-        <QueryClientProvider client={queryClient}>
-          <TamaguiProvider config={config} defaultTheme="dark_neon">
+      <TamaguiProvider config={config} defaultTheme="dark">
+        <WagmiProvider config={wagmiAdapter.wagmiConfig}>
+          <QueryClientProvider client={queryClient}>
             <App />
-          </TamaguiProvider>
-        </QueryClientProvider>
-      </WagmiProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
+      </TamaguiProvider>
     </StrictMode>
   );
 }

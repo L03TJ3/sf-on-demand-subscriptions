@@ -1,10 +1,8 @@
-import { createTamagui, createFont } from 'tamagui';
-import { tokens, themes as baseThemes } from '@tamagui/themes';
-import { createAnimations } from '@tamagui/animations-react-native';
-import { createThemeBuilder } from '@tamagui/theme-builder';
+import { createTamagui, createFont, TamaguiInternalConfig } from "tamagui";
+import { tokens } from "@tamagui/themes";
 
 const orbitronFont = createFont({
-  family: 'Orbitron, sans-serif',
+  family: "Orbitron, sans-serif",
   size: {
     1: 12,
     2: 14,
@@ -30,54 +28,63 @@ const orbitronFont = createFont({
     10: 56,
   },
   weight: {
-    4: '400',
-    5: '500',
-    7: '700',
+    4: "400",
+    5: "500",
+    7: "700",
   },
   letterSpacing: {
     4: 0,
   },
 });
 
-const themeBuilder = createThemeBuilder().addThemes({
-  dark_neon: {
-    parent: 'dark',
-    theme: {
-      background: '#0d0d0d',
-      backgroundHover: '#1a1a1a',
-      backgroundPress: '#262626',
-      color: '#e0e0e0',
-      colorHover: '#ffffff',
-      colorPress: '#ffffff',
-      borderColor: '#a855f7',
-      borderColorHover: '#c084fc',
-      shadowColor: '#a855f7',
-      shadowColorHover: '#c084fc',
-      placeholderColor: '#7e7e7e',
+const customTheme: any = {
+  dark: {
+    background: "#0d0d0d",
+    backgroundHover: "#1a1a1a",
+    backgroundPress: "#262626",
+    color: "#e0e0e0",
+    colorHover: "#ffffff",
+    colorPress: "#ffffff",
+    borderColor: "#a855f7",
+    borderColorHover: "#c084fc",
+    shadowColor: "#a855f7",
+    shadowColorHover: "#c084fc",
+    placeholderColor: "#7e7e7e",
+  },
+};
+
+const config: TamaguiInternalConfig = createTamagui({
+  tokens,
+  themes: {
+    dark: {
+      background: "#0d0d0d",
+      backgroundHover: "#1a1a1a",
+      backgroundPress: "#262626",
+      color: "#e0e0e0",
+      colorHover: "#ffffff",
+      colorPress: "#ffffff",
+      borderColor: "#a855f7",
+      borderColorHover: "#c084fc",
+      shadowColor: "#a855f7",
+      shadowColorHover: "#c084fc",
+      placeholderColor: "#7e7e7e",
     },
   },
-});
-
-const themes = { ...baseThemes, ...themeBuilder.build() } as const;
-
-const config = createTamagui({
-  tokens,
-  themes,
-  defaultTheme: 'dark_neon',
+  defaultTheme: "dark",
   fonts: {
     heading: orbitronFont,
     body: orbitronFont,
   },
-  animations: createAnimations({
-    fast: 'ease-in 150ms',
-    medium: 'ease-out 300ms',
-    slow: 'ease-out 450ms'
-  })
+  // animations: createAnimations({
+  //   fast: "ease-in 150ms",
+  //   medium: "ease-out 300ms",
+  //   slow: "ease-out 450ms",
+  // }),
 });
 
 export type AppConfig = typeof config;
 
-declare module 'tamagui' {
+declare module "tamagui" {
   interface TamaguiCustomConfig extends AppConfig {}
 }
 

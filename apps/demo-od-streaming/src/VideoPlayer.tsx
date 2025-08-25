@@ -134,7 +134,7 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
           borderRadius="$6"
           borderWidth={2}
           borderColor="$borderColor"
-          elevation="$2"
+          elevation="$1"
           shadowColor="$shadowColor"
         >
           <Text color="$color">Loading video player...</Text>
@@ -147,7 +147,7 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
           borderRadius="$6"
           borderWidth={2}
           borderColor="$borderColor"
-          elevation="$2"
+          elevation="$1"
           shadowColor="$shadowColor"
         >
           <video
@@ -156,7 +156,7 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
             controls
             preload="auto"
             playsInline
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: "100%", height: "100%" }}
           >
             <source src={src} type="video/mp4" />
           </video>
@@ -168,12 +168,12 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
           <Dialog.Overlay backgroundColor="$background" opacity={0.8} />
           <Dialog.Content
             bordered
-            elevate
             borderRadius="$6"
             backgroundColor="$background"
             borderWidth={2}
             borderColor="$borderColor"
             shadowColor="$shadowColor"
+            elevation="$1"
             padding="$4"
             gap="$3"
             width="90%"
@@ -191,8 +191,12 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
                 </Text>
               ) : (
                 <>
-                  <Text color="$color">Video length: {Math.round(duration)} sec</Text>
-                  <Text color="$color">Rate: {TOKENS_PER_SECOND.toFixed(2)} G$/sec</Text>
+                  <Text color="$color">
+                    Video length: {Math.round(duration)} sec
+                  </Text>
+                  <Text color="$color">
+                    Rate: {TOKENS_PER_SECOND.toFixed(2)} G$/sec
+                  </Text>
                   <Text color="$color">Total: {totalTokens.toFixed(2)} G$</Text>
                 </>
               )}
@@ -205,10 +209,10 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
                   borderWidth={2}
                   borderColor="$borderColor"
                   color="$color"
-                  elevation="$2"
-                  animation="fast"
-                  hoverStyle={{ backgroundColor: '$backgroundHover' }}
-                  pressStyle={{ backgroundColor: '$backgroundPress' }}
+                  // elevation="$1"
+                  // animation="fast"
+                  hoverStyle={{ backgroundColor: "$backgroundHover" }}
+                  pressStyle={{ backgroundColor: "$backgroundPress" }}
                 >
                   Cancel
                 </Button>
@@ -219,10 +223,10 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
                   borderColor="$borderColor"
                   backgroundColor="$borderColor"
                   color="$background"
-                  elevation="$2"
-                  animation="fast"
-                  hoverStyle={{ backgroundColor: '$borderColorHover' }}
-                  pressStyle={{ backgroundColor: '$borderColorHover' }}
+                  // elevation="$1"
+                  // animation="fast"
+                  hoverStyle={{ backgroundColor: "$borderColorHover" }}
+                  pressStyle={{ backgroundColor: "$borderColorHover" }}
                 >
                   Start
                 </Button>

@@ -4,22 +4,20 @@ import { mockVideos, Video } from "./videos";
 import { VideoPlayer } from "./VideoPlayer";
 import { useState } from "react";
 
-const GS_DEV_TOKEN = "0xFa51eFDc0910CCdA91732e6806912Fa12e2FD475";
-
 function renderVideo(video: Video, onSelect: (v: Video) => void) {
   return (
     <Button
       key={video.id}
       onPress={() => onSelect(video)}
       borderRadius="$6"
-      padding={0}
+      padding={10}
       overflow="hidden"
+      height="100px"
       borderWidth={2}
       borderColor="$borderColor"
-      elevate
-      animation="fast"
-      hoverStyle={{ backgroundColor: '$backgroundHover' }}
-      pressStyle={{ backgroundColor: '$backgroundPress' }}
+      // animation="fast"
+      hoverStyle={{ backgroundColor: "$backgroundHover" }}
+      pressStyle={{ backgroundColor: "$backgroundPress" }}
     >
       <Image source={{ uri: video.thumbnail }} width={160} height={90} />
     </Button>
@@ -32,7 +30,8 @@ function ConnectSection() {
       gap="$4"
       alignItems="center"
       justifyContent="center"
-      animation="medium"
+      theme="dark_neon"
+      // animation="medium"
     >
       <Text color="$color">Connect your wallet to view videos</Text>
       {/* AppKit provides the connect button as a web component */}
@@ -43,7 +42,12 @@ function ConnectSection() {
 
 function VideoGallery({ onSelect }: { onSelect: (v: Video) => void }) {
   return (
-    <XStack flexWrap="wrap" gap="$4" animation="medium">
+    <XStack
+      flexWrap="wrap"
+      gap="$4"
+
+      // animation="medium"
+    >
       {mockVideos.map((v) => renderVideo(v, onSelect))}
     </XStack>
   );
@@ -58,14 +62,14 @@ function VideoPage({ video, onBack }: { video: Video; onBack: () => void }) {
         borderRadius="$6"
         borderWidth={2}
         borderColor="$borderColor"
-        elevate
-        animation="fast"
-        hoverStyle={{ backgroundColor: '$backgroundHover' }}
-        pressStyle={{ backgroundColor: '$backgroundPress' }}
+        elevation={"$1"}
+        // animation="fast"
+        hoverStyle={{ backgroundColor: "$backgroundHover" }}
+        pressStyle={{ backgroundColor: "$backgroundPress" }}
       >
         <Text color="$color">Back</Text>
       </Button>
-      </YStack>
+    </YStack>
   );
 }
 
