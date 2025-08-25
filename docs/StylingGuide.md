@@ -1,5 +1,8 @@
 ## Tamagui Design-System & Motion Guidelines
 
+Make sure to review https://tamagui.dev/ui/intro for the latest documentation.
+always verify and keep below instructions up to date.
+
 ### 1. Component Preference Order
 
 1. **Use Finnie’s pre-styled design-system components** (e.g. `PrimaryButton`, `Card`, `TitleUnderline`).
