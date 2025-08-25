@@ -44,9 +44,9 @@ function VideoGallery({ onSelect }: { onSelect: (v: Video) => void }) {
 
 function VideoPage({ video, onBack }: { video: Video; onBack: () => void }) {
   return (
-    <YStack gap="$4" alignItems="center">
-      <Button onPress={onBack}>Back</Button>
+    <YStack gap="$4" alignItems="center" width="100%">
       <VideoPlayer src={video.src} />
+      <Button onPress={onBack}>Back</Button>
     </YStack>
   );
 }
@@ -58,7 +58,10 @@ export default function App() {
     <YStack flex={1} padding="$4" alignItems="center" justifyContent="center">
       {isConnected ? (
         selectedVideo ? (
-          <VideoPage video={selectedVideo} onBack={() => setSelectedVideo(null)} />
+          <VideoPage
+            video={selectedVideo}
+            onBack={() => setSelectedVideo(null)}
+          />
         ) : (
           <VideoGallery onSelect={setSelectedVideo} />
         )
