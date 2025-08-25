@@ -61,10 +61,7 @@ function ConnectSection() {
 
 function VideoGallery({ onSelect }: { onSelect: (v: Video) => void }) {
   return (
-    <XStack
-      flexWrap="wrap"
-      gap="$4"
-    >
+    <XStack flexWrap="wrap" gap="$4">
       {mockVideos.map((v) => renderVideo(v, onSelect))}
     </XStack>
   );
@@ -72,7 +69,7 @@ function VideoGallery({ onSelect }: { onSelect: (v: Video) => void }) {
 
 function VideoPage({ video, onBack }: { video: Video; onBack: () => void }) {
   return (
-    <YStack gap="$4" alignItems="center" width="100%">
+    <YStack gap="$4" alignItems="center" width={800}>
       <VideoPlayer src={video.src} />
       <Button
         onPress={onBack}
@@ -121,7 +118,7 @@ function GalleryTabs({
 function Sidebar() {
   return (
     <YStack
-      width={80}
+      width={320}
       padding="$4"
       borderRightWidth={1}
       borderColor="$borderColor"
